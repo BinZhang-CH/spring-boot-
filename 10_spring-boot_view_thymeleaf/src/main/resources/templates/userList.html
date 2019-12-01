@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户列表</title>
+</head>
+<body>
+<div>
+<table border="1" align="center">
+    <thead>
+    <th>顺序</th>
+    <th>用户ID</th>
+    <th>姓名</th>
+    <th>年龄</th>
+    </thead>
+    <tr th:each="userDao,num:${users}">
+        <td th:text="${num.index+1}"></td>
+        <td th:text="${userDao.uId}"></td>
+        <td th:text="${userDao.name}"></td>
+        <td th:text="${userDao.age}"></td>
+        <td th:text="${userDao.age}"></td>
+        <td th:text="${num.odd}"></td>
+        <td th:text="${num.even}"></td>
+    </tr>
+</table>
+
+<table border="1" align="center">
+    <thead>
+    <th>顺序</th>
+    <th>用户ID</th>
+    <th>姓名</th>
+    <th>年龄</th>
+    </thead>
+    <tr th:each="map,num:${hashMap}">
+        <td th:text="${map.key}"></td>
+        <td th:text="${map.value.uId}"></td>
+        <td th:text="${map.value.name}"></td>l
+        <td th:text="${map.value.age}"></td>
+        <td th:text="${map.value.age}"></td>
+        <td th:text="${num.odd}"></td>
+        <td th:text="${num.even}"></td>
+    </tr>
+</table>
+    <a th:href="@{/showUser}">访问controller方法</a>
+    <a th:href="@{www.baidu.com}">访问controller方法</a>
+</div>
+<div th:include="@{/commons/footer} :: companyInfo" th:with="projectName=百度"/>
+</body>
+</html>

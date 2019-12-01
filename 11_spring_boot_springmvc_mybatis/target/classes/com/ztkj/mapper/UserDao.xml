@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztkj.mapper.UserDao">
+    <!--在配置文件中已经添加了pojo的别名了，所以这里parameterMap直接用user-->
+    <resultMap id="userMap" type="com.ztkj.pojo.User" >
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <insert id="addUser">
+        insert into ssm.TE_USER (name,age) values (#{name},#{age})
+    </insert>
+
+    <select id="getUsersByPage" resultMap="userMap">
+       SELECT id,name,age FROM te_user
+       <where>
+          <if test="id !=null and id !=''">and id = #{id}</if>
+          <if test="name !=null and name !=''">and name = #{name}</if>
+          <if test="age !=null and name !=''">and age = #{age}</if>
+       </where>
+        limit #{page},#{pageSize}
+    </select>
+</mapper>

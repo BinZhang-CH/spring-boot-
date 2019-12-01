@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户添加</title>
+</head>
+<body>
+<form  th:action="@{/user/sava}" method="post">
+    名称：<input type="text" name="name"/><span color="red" th:errors="${user.name}"></span><br/>
+    年龄：<input type="text" name="age"/><span color="red" th:errors="${user.age}"></span><br/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>
